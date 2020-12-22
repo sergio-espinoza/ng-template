@@ -1,0 +1,18 @@
+<ng-container *ngIf="form" [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>{{ inputData.label }}</mat-label>
+    <span matPrefix>
+      <mat-icon>{{ inputData.prefixIcon }}</mat-icon>
+    </span>
+    <input
+      matInput
+      [type]="inputData.type"
+      [minLength]="inputData.minLength"
+      [maxLength]="inputData.maxLength"
+      [required]="inputData.required"
+      autocomplete="off"
+      [formControlName]="formControlName"
+    />
+    <mat-error>{{ inputData.errorMessage }}</mat-error>
+  </mat-form-field>
+</ng-container>

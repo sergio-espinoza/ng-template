@@ -1,0 +1,29 @@
+<div class="image-picker-loading" *ngIf="isLoading; else imagePickerContainer">
+    <mat-progress-spinner mode="indeterminate" diameter="60"></mat-progress-spinner>
+</div>
+<ng-template #imagePickerContainer>
+    <div matRipple *ngIf="!imageSource; else editImageEl" class="image-picker-add mat-button flex-center-center" [class.avatar-image]="isAvatarTypeImagePicker" (click)="pickAnImage()">
+        <mat-icon>add</mat-icon>
+    </div>
+    <ng-template #editImageEl>
+        <div class="image-picker-control new-item file-input-item" [ngClass]="{
+        'activated-fullscreen': activatedFullscreen,
+        'avatar-image': isAvatarTypeImagePicker
+      }">
+            <div class="image-picker-content">
+                <img class="image-picker-source" loading="lazy" [src]="imageSource" />
+                <div matRipple class="image-picker-fullscreen flex-center-center" (click)="activatedFullscreen = true">
+                    <mat-icon class="image-fullscreen-icon">fullscreen</mat-icon>
+                </div>
+                <button mat-mini-fab class="normalscreen-button bg-main mat-elevation-z4" (click)="activatedFullscreen = false">
+          <mat-icon>close_fullscreen</mat-icon>
+        </button>
+            </div>
+            <div matRipple class="mat-button image-picker-control-action normal-flex-rcc" (click)="pickAnImage()">
+                <div class="flex-center-center">
+                    <mat-icon>camera_alt</mat-icon>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</ng-template>

@@ -1,0 +1,24 @@
+<div class="pdf-picker-loading" *ngIf="isLoading; else pdfPickerContainer">
+    <mat-progress-spinner mode="indeterminate" diameter="60"></mat-progress-spinner>
+</div>
+<ng-template #pdfPickerContainer>
+    <span>{{ title }}</span>
+    <div class="cv-input bg-main h-100p ">
+        <a [style.display]="pdfSource ? 'block' : 'none'" target="_blank" download [href]="pdfSource" class="subtitle-small">Ver Archivo</a
+    >
+    <input
+      type="file"
+      hidden
+      #pdfFileInputEl
+      accept="application/pdf"
+      (change)="sendPdfFileChange($event)"
+    />
+    <button
+      mat-mini-fab
+      class="button-upload bg-main"
+      (click)="pickPdfFile(pdfFileInputEl)"
+    >
+      <mat-icon>cloud_upload</mat-icon>
+    </button>
+  </div>
+</ng-template>

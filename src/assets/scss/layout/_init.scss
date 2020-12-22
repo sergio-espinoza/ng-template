@@ -1,0 +1,123 @@
+$font-family-montserrat: Montserrat,
+"Helvetica Neue",
+sans-serif;
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+$custom-typography: mat-typography-config( $font-family: $font-family-montserrat, );
+@include mat-core($custom-typography);
+.ov-hidden {
+    overflow: hidden !important;
+}
+
+
+/*logo*/
+
+.background-loading {
+    position: absolute;
+    opacity: 1;
+    z-index: -1000;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    background: $tp-primary;
+    animation-name: initial-render;
+    animation-duration: 2.5s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes nudge {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(5px, 0);
+    }
+    80% {
+        transform: translate(-5px, 0);
+    }
+}
+
+@keyframes initial-render {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.waves-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    transform: scale(1);
+    overflow: hidden;
+    line-height: 0;
+    animation: waves-sliding 2.5s forwards;
+}
+
+.waves-container svg {
+    position: relative;
+    display: block;
+    width: calc(211% + 1.3px);
+    height: 386px;
+}
+
+.waves-container .shape-fill {
+    fill: $tp-secondary;
+    opacity: 0.5;
+}
+
+@keyframes waves-sliding {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0.4;
+    }
+}
+
+.logo-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: text-animate 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+@keyframes text-animate {
+    0% {
+        filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+
+/*texto*/
+
+.container-text {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fill 0.5s ease forwards 2.45s;
+}
+
